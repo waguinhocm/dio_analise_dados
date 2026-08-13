@@ -12,8 +12,8 @@ from sklearn.preprocessing import StandardScaler
 url = "https://raw.githubusercontent.com/ageron/handson-ml/master/datasets/housing/housing.csv"
 
 df = pd.read_csv(url)
-"""print(df.head())
-print(df.info())"""
+print(df.head())
+"""print(df.info())"""
 
 df = df.dropna()  # apagar linhas com valores nulos
 x = df.drop("median_house_value", axis=1)  # x recebe todas as colunas menos a coluna median_house_value
@@ -79,6 +79,14 @@ plt.ylabel('Valores Previstos')
 plt.title('Valores Reais vs Valores Previstos')
 plt.show()"""
 
+"""plt.figure(figsize=(8, 5))
+plt.scatter(df['median_income'], df['total_rooms'], alpha=0.5)
+
+plt.xlabel('Renda Média')
+plt.ylabel('Número Total de Quartos')
+plt.title('Relação entre Renda Média e Número Total de Quartos')
+plt.show()"""
+
 """df_class = df.copy()  # criar uma cópia do dataframe original para classificação
 df_class['higPrice'] = (
     df_class['median_house_value'] >
@@ -131,19 +139,18 @@ recall - qual a proporção de verdadeiros positivos em relação ao total de po
     Em outras palavras, mede a capacidade do modelo de encontrar todos os exemplos positivos.
 f1 - é a média harmônica entre precisão e recall, fornecendo uma medida balanceada do desempenho do modelo."""
 
-scaler = StandardScaler()
-x_cluster = scaler.fit_transform(x)
-wss = []
+"""wss = []
 k_range = range(1, 10)
+X_cluster = df[['median_house_value', 'median_income']]  # selecionar as colunas median_income e median_house_value para o clustering
 
 for k in k_range:
     model = KMeans(n_clusters=k, random_state=42)
-    model.fit(x_cluster)
+    model.fit(X_cluster)
 
     wss.append(model.inertia_)
 
-plt.plot(k, wss, marker='o')
+plt.plot(k_range, wss, marker='o')
 plt.xlabel('Número de Clusters (k)')
 plt.ylabel('WSS')
 plt.title('Método do Cotovelo para Determinar o Número Ideal de Clusters')
-plt.show()
+plt.show()"""
